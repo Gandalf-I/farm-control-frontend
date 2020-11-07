@@ -1,0 +1,20 @@
+
+// core
+@import "core/global";
+
+html, body {
+  color: black;
+  height: 100%;
+  width: 100%;
+  font-size: 14px;
+}
+
+* {
+  line-height: 1;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  outline: none;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
