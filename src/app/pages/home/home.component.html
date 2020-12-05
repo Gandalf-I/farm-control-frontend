@@ -1,0 +1,32 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side" opened>
+    <nav class="nav">
+      <ul>
+        <li><a routerLink="/first-component" routerLinkActive="active">First Component</a></li>
+        <li><a routerLink="/second-component" routerLinkActive="active">Second Component</a></li>
+      </ul>
+    </nav>
+    <app-switch-language-button></app-switch-language-button>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+<!--    <button type="button" mat-button (click)="drawer.toggle()">-->
+<!--      Toggle sidenav-->
+<!--    </button>-->
+    <div leaflet style="height: 100%; width: 100%; margin: 0; padding: 0;"
+         leafletDraw
+         [leafletOptions]="options"
+         [leafletDrawOptions]="drawOptions"
+         (leafletDrawCreated)="onDrawCreated($event)"
+         (leafletDrawStart)="onDrawStart($event)"
+         (leafletMapReady)="onMapReady($event)"
+          id="map">
+
+      <!-- Add the drawnItems featureGroup to the map -->
+      <div [leafletLayer]="drawnItems"></div>
+
+    </div>
+
+  </div>
+
+</mat-drawer-container>

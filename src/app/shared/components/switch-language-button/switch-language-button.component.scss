@@ -1,0 +1,23 @@
+.lang {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: center;
+  grid-gap: 20px;
+
+  &__button {
+    border: none;
+    background: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+
+    .flag-img {
+      height: 25px;
+    }
+  }
+
+  .active-language {
+    border: 1px solid black;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  }
+}

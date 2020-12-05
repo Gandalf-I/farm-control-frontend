@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@core/services/auth.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { RoutesEnum } from '@shared/enums/routes.enum';
 import { Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 
@@ -46,8 +45,7 @@ export class SignUpComponent implements OnInit {
         untilDestroyed(this),
       )
       .subscribe(() => {
-        console.log(1234567543);
-        this.router.navigateByUrl(RoutesEnum.Home);
+        this.router.navigate(['workspace']);
       });
   }
 }

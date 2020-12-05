@@ -1,0 +1,18 @@
+<div class="lang">
+  <button class="lang__button" (click)="setLang('ua')">
+    <img
+      alt="flag"
+      [ngClass]="{'active-language' :  lang === 'ua'}"
+      [src]="'https://www.flagistrany.ru/data/flags/mini/ua.png'"
+      class="flag-img"
+    >
+  </button>
+  <button class="lang__button" (click)="setLang('en')">
+    <img
+      alt="flag"
+      [ngClass]="{'active-language' :  lang === 'en'}"
+      [src]="'https://www.flagistrany.ru/data/flags/mini/us.png'"
+      class="flag-img"
+    />
+  </button>
+</div>

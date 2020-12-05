@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@core/services/auth.service';
 import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { RoutesEnum } from '@shared/enums/routes.enum';
 
 @UntilDestroy()
 @Component({
@@ -46,7 +45,7 @@ export class SignInComponent implements OnInit {
         untilDestroyed(this),
       )
       .subscribe(() => {
-        this.router.navigateByUrl(RoutesEnum.Home);
+        this.router.navigate(['workspace']);
       });
   }
 

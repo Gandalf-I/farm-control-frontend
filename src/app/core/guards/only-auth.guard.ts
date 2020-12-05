@@ -25,7 +25,7 @@ export class OnlyAuthGuard implements CanActivate {
         );
     }
 
-    return this.router.navigate(['auth']); 
+    return this.router.navigate(['auth']);
   }
 
 }

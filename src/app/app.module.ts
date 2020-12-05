@@ -7,6 +7,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BackendModule } from '@backend/backend.module';
+import { TranslateModule } from '@ngx-translate/core';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { LeafletDrawModule } from '@asymmetrik/ngx-leaflet-draw';
 
 @NgModule({
   declarations: [
@@ -18,6 +21,11 @@ import { BackendModule } from '@backend/backend.module';
     BrowserAnimationsModule,
     CoreModule,
     BackendModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'ua',
+    }),
+    LeafletModule,
+    LeafletDrawModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

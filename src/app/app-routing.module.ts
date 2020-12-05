@@ -12,8 +12,17 @@ const routes: Routes = [
     canActivate: [OnlyAuthGuard],
     children: [
       {
-        path: '',
+        path: 'workspaces',
+        loadChildren: () => import('@pages/workspace/workspace.module').then(m => m.WorkspaceModule),
+      },
+      {
+        path: 'workspace/:id',
         loadChildren: () => import('@pages/home/home.module').then(m => m.HomeModule),
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'workspaces',
       },
     ],
   },
