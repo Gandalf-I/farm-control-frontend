@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import * as L from 'leaflet';
 import { DrawEvents, featureGroup, FeatureGroup, icon, latLng, tileLayer } from 'leaflet';
+import { AuthService } from '@core/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,10 @@ import { DrawEvents, featureGroup, FeatureGroup, icon, latLng, tileLayer } from 
   styleUrls: ['./home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent{
+export class HomeComponent {
+
+  constructor(public authService: AuthService) {
+  }
 
   drawnItems: FeatureGroup = featureGroup();
   options = {

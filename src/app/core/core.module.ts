@@ -10,6 +10,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     CommonModule,
     ServicesModule,
     MatSnackBarModule,
+    InterceptorsModule,
   ],
 })
 export class CoreModule { }

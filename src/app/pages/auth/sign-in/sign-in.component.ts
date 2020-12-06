@@ -45,7 +45,7 @@ export class SignInComponent implements OnInit {
         untilDestroyed(this),
       )
       .subscribe(() => {
-        this.router.navigate(['workspace']);
+        this.router.navigate(['workspaces']);
       });
   }
 

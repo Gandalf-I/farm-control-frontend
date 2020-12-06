@@ -11,7 +11,7 @@ export class HttpService {
   constructor(private http: HttpClient) {
   }
 
-  post<T>(url: HttpRequestsEnum, body, headers: any = null, params: any = null): Observable<T> {
+  post<T>(url: any, body, headers: any = null, params: any = null): Observable<T> {
     headers = new HttpHeaders(this.formatHeaders(headers));
 
     return this.http.post<T>(this.url + url, body, {
@@ -21,7 +21,7 @@ export class HttpService {
     });
   }
 
-  patch<T>(url: HttpRequestsEnum, body, headers: any = null, params: any = null): Observable<T> {
+  patch<T>(url: any, body, headers: any = null, params: any = null): Observable<T> {
     headers = new HttpHeaders(this.formatHeaders(headers));
 
     return this.http.patch<T>(this.url + url, body, {
@@ -31,7 +31,7 @@ export class HttpService {
     });
   }
 
-  get<T>(url: HttpRequestsEnum, headers: any = null, params: any = {}): Observable<T> {
+  get<T>(url: any, headers: any = null, params: any = {}): Observable<T> {
     headers = new HttpHeaders(this.formatHeaders(headers));
 
     return this.http.get<T>(this.url + url, {
@@ -41,7 +41,7 @@ export class HttpService {
     });
   }
 
-  delete<T>(url: HttpRequestsEnum, headers: any = null, params: any = null): Observable<T> {
+  delete<T>(url: any, headers: any = null, params: any = null): Observable<T> {
     headers = new HttpHeaders(this.formatHeaders(headers));
 
     return this.http.delete<T>(this.url + url, {

@@ -1,0 +1,5 @@
+<ng-container *ngIf="workspace">
+  <span class="workspace-title">{{workspace.name}}</span>
+  <span class="total-user">{{workspace.total}}</span>
+  <mat-icon aria-label="close" (click)="exit()">close</mat-icon>
+</ng-container>

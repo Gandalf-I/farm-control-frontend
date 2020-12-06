@@ -1,1 +1,51 @@
-<p>workspace works!</p>
+<div class="workspaces">
+  <div class="my-workspaces">
+    <div class="add-workspace">
+      <div class="title">Create workspace</div>
+      <form class="form" [formGroup]="workspaceForm" (ngSubmit)="createWorkspace()">
+        <mat-form-field appearance="legacy">
+          <mat-label>Name workspace</mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Select user</mat-label>
+          <input type="text"
+                 matInput
+                 formControlName="login"
+                 [matAutocomplete]="auto">
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let user of users | async" [value]="user.login">
+              {{user.login}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <mat-icon aria-label="close" class="add" (click)="addUserInWorkspace()">add</mat-icon>
+        <div class="user-selected-list" *ngIf="selectUsers.length">
+          <div class="title">Users add in workspace</div>
+          <div class="user" *ngFor="let user of selectUsers; index as i">
+            {{i + 1}}) {{user.login}}
+          </div>
+        </div>
+        <button mat-raised-button color="primary" class="btn" (click)="createWorkspace()">Create</button>
+      </form>
+    </div>
+    <div class="my-workspaces-list">
+      <div class="title">
+        My workspaces
+      </div>
+      <div class="card-workspace-wrap" *ngFor="let workspace of workspaces">
+        <span class="workspace-title">{{workspace.name}}</span>
+        <span class="total-user">{{workspace.total}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="allow-workspace-list">
+    <div class="card-workspace-wrap" *ngFor="let workspace of workspaces">
+      <span class="workspace-title">{{workspace.name}}</span>
+      <span class="total-user">{{workspace.total}}</span>
+    </div>
+  </div>
+</div>
+

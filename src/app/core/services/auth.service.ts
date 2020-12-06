@@ -5,7 +5,7 @@ import { ISignUp } from '@backend/interfaces/sign-up.interface';
 import { empty, Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { CookieEnum } from '@shared/enums/cookie.enum';
-import { IUserWitToken } from '@shared/interfaces/user.interface';
+import { UserWitToken } from '@shared/interfaces/user.interface';
 import { UserService } from '@core/services/user.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -19,12 +19,11 @@ export class AuthService {
               private router: Router,
               private snackBar: MatSnackBar) { }
 
-  public signUp(payload: ISignUp, check?: boolean): Observable<IUserWitToken> {
+  public signUp(payload: ISignUp, check?: boolean): Observable<UserWitToken> {
     return this.backend.auth.signUp(payload)
       .pipe(
         tap((user) => {
           this.cookie.set(CookieEnum.Jwt, user.token);
-          this.userService.user = user;
         }),
         catchError(({ error, title }) =>
           check ? this.signIn(payload) : throwError(error || title),
@@ -40,13 +39,12 @@ export class AuthService {
       );
   }
 
-  public signIn(payload: ISignUp, check?: boolean): Observable<IUserWitToken> {
+  public signIn(payload: ISignUp, check?: boolean): Observable<UserWitToken> {
     return this.backend.auth.signIn(payload)
       .pipe(
         tap((user) => {
-          console.log(23112312);
           this.cookie.set(CookieEnum.Jwt, user.token);
-          this.userService.user = user;
+          // this.userService.getUser();
         }),
         catchError(({ error, title }) =>
           check ? this.signUp(payload) : throwError(error || title),

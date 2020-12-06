@@ -1,9 +1,9 @@
-export interface IUser {
+export interface User {
   email: string;
   login: string;
   id: string;
 }
 
-export interface IUserWitToken extends IUser {
+export interface UserWitToken extends User {
   token: string;
 }
