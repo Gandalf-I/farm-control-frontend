@@ -1,19 +1,29 @@
-<mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side" opened>
-    <nav class="nav">
-      <ul>
-        <li><a routerLink="/first-component" routerLinkActive="active">First Component</a></li>
-        <li><a routerLink="/second-component" routerLinkActive="active">Second Component</a></li>
-      </ul>
-    </nav>
-    <app-switch-language-button></app-switch-language-button>
-    <div class="logout" (click)="authService.logOut()">Logout</div>
+<mat-drawer-container class="drawer-container" autosize>
+  <mat-drawer #drawer mode="side" opened>
+    <div class="sidenav">
+      <header class="header">
+        <nav class="nav">
+          <img src="/assets/images/logo.png" alt="logo" routerLink="./" class="img">
+          <ul>
+            <li><a routerLink="./seasons" routerLinkActive="active">Seasons</a></li>
+            <li><a routerLink="./fields" routerLinkActive="active">Fields</a></li>
+            <li><a routerLink="./notes" routerLinkActive="active">Notes</a></li>
+            <li><a routerLink="./sensors" routerLinkActive="active">Sensors</a></li>
+          </ul>
+        </nav>
+      </header>
+      <footer class="footer">
+        <a routerLink="./statistics" routerLinkActive="active" class="statistics">Go to statistics</a>
+        <app-switch-language-button></app-switch-language-button>
+        <button mat-raised-button color="primary" class="logout" (click)="authService.logOut()">Logout</button>
+      </footer>
+    </div>
   </mat-drawer>
 
-  <div class="example-sidenav-content">
-<!--    <button type="button" mat-button (click)="drawer.toggle()">-->
-<!--      Toggle sidenav-->
-<!--    </button>-->
+  <main class="sidenav-content">
+    <div class="route-wrap">
+      <router-outlet></router-outlet>
+    </div>
     <div leaflet style="height: 100%; width: 100%; margin: 0; padding: 0;"
          leafletDraw
          [leafletOptions]="options"
@@ -21,13 +31,13 @@
          (leafletDrawCreated)="onDrawCreated($event)"
          (leafletDrawStart)="onDrawStart($event)"
          (leafletMapReady)="onMapReady($event)"
-          id="map">
+         id="map">
 
       <!-- Add the drawnItems featureGroup to the map -->
       <div [leafletLayer]="drawnItems"></div>
 
     </div>
 
-  </div>
+  </main>
 
 </mat-drawer-container>

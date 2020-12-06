@@ -21,7 +21,7 @@ const routes: Routes = [
       },
       {
         path: 'sensors',
-        loadChildren: () => import('./seasons/seasons.module').then(m => m.SeasonsModule),
+        loadChildren: () => import('./sensors/sensors.module').then(m => m.SensorsModule),
       },
     ],
   },

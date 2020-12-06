@@ -1,6 +1,7 @@
 
 // core
 @import "core/global";
+@import "core/page";
 
 html, body {
   color: black;
@@ -15,4 +16,12 @@ html, body {
   box-sizing: border-box;
   font-family: 'Arial', sans-serif;
   outline: none;
+  text-decoration: none;
+}
+
+a {
+  color: black;
+  &:hover {
+    color: #1c37d0;
+  }
 }

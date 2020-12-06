@@ -27,24 +27,41 @@
             {{i + 1}}) {{user.login}}
           </div>
         </div>
-        <button mat-raised-button color="primary" class="btn" (click)="createWorkspace()">Create</button>
+        <button mat-raised-button color="primary" class="btn">Create</button>
+        <span class="message">{{message}}</span>
       </form>
     </div>
     <div class="my-workspaces-list">
       <div class="title">
         My workspaces
       </div>
-      <div class="card-workspace-wrap" *ngFor="let workspace of workspaces">
-        <span class="workspace-title">{{workspace.name}}</span>
-        <span class="total-user">{{workspace.total}}</span>
+      <div class="wrap-list-card">
+        <mat-card class="card-workspace-wrap" *ngFor="let workspace of myWorkspaces" [routerLink]="['/workspace', workspace.id]">
+          <mat-card-header>
+            <mat-icon aria-label="close" (click)="deleteWorkspace(workspace); $event.stopPropagation()">close</mat-icon>
+            <mat-card-title class="workspace-title">
+              {{workspace.name}}
+            </mat-card-title>
+            <mat-card-subtitle>Total users: {{workspace.users.length + 1}}</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
       </div>
     </div>
   </div>
 
-  <div class="allow-workspace-list">
-    <div class="card-workspace-wrap" *ngFor="let workspace of workspaces">
-      <span class="workspace-title">{{workspace.name}}</span>
-      <span class="total-user">{{workspace.total}}</span>
+  <div class="my-workspaces-list">
+    <div class="title">
+      Allow workspaces
+    </div>
+    <div class="wrap-list-card">
+      <mat-card class="card-workspace-wrap" *ngFor="let workspace of accessWorkspaces" [routerLink]="['/workspace', workspace.id]">
+        <mat-card-header>
+          <mat-card-title class="workspace-title">
+            {{workspace.name}}
+          </mat-card-title>
+          <mat-card-subtitle>Total users: {{workspace.users.length + 1}}</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
     </div>
   </div>
 </div>

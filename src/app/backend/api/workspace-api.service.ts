@@ -10,12 +10,12 @@ export class WorkspaceApiService {
 
   constructor(private http: HttpService) { }
 
-  public getWorkspaceByUserCreated(id): Observable<Workspace[]> {
-    return this.http.get('/workspace/creator', {}, { id });
+  public getWorkspaceByUserCreated(): Observable<Workspace[]> {
+    return this.http.get('/workspace/user/creator', {}, {});
   }
 
-  public getWorkspaceByUserAccess(id): Observable<Workspace[]> {
-    return this.http.get('/workspace/access', {}, { id });
+  public getWorkspaceByUserAccess(): Observable<Workspace[]> {
+    return this.http.get('/workspace/user/access', {}, {});
   }
 
   public getWorkspaceById(id: number): Observable<Workspace> {

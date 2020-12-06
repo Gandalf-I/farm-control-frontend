@@ -1,0 +1,47 @@
+.page-wrap {
+  display: grid;
+  height: 100%;
+  padding: 20px;
+  justify-items: center;
+
+  .title {
+    font-weight: 500;
+    font-size: 18px;
+    align-self: start;
+  }
+
+  .card-list {
+    display: grid;
+
+    .card {
+      display: grid;
+
+      &__title {
+
+      }
+
+      &__content {
+
+      }
+
+      &__btn-edit {
+
+      }
+
+      &__btn-delete {
+
+      }
+
+      &__btn-open {
+
+      }
+
+
+    }
+  }
+
+  .add-btn {
+    align-self: end;
+  }
+
+}

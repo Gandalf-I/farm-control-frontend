@@ -1,18 +1,74 @@
-.example-container {
+.drawer-container {
   width: 100%;
   height: 100%;
   overflow: hidden;
   position: static;
+
+  .sidenav {
+    display: grid;
+    padding: 10px;
+    width: 160px;
+
+    .header {
+      .nav {
+        display: grid;
+        font-size: 18px;
+        grid-gap: 20px;
+
+        .img {
+          height: 50px;
+          justify-self: center;
+          cursor: pointer;
+        }
+
+        ul {
+          display: grid;
+          grid-gap: 10px;
+
+          li {
+
+          }
+        }
+      }
+    }
+
+    .footer {
+      display: grid;
+      justify-content: center;
+      align-content: end;
+      grid-gap: 20px;
+    }
+  }
+
+  .sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    .route-wrap {
+      position: absolute;
+      left: 0;
+      height: 100%;
+      z-index: 1000;
+      background: #ffffff;
+    }
+  }
+
+
 }
 
-.example-sidenav-content {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
+
+::ng-deep .mat-drawer-inner-container {
+  display: grid;
 }
 
-.example-sidenav {
-  padding: 10px;
-  width: 200px;
+.active {
+  font-weight: 600;
+  color: #D93025;
+}
+
+.statistics {
+  font-weight: 600;
 }

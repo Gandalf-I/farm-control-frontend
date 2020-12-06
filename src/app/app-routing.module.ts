@@ -20,6 +20,10 @@ const routes: Routes = [
         loadChildren: () => import('@pages/home/home.module').then(m => m.HomeModule),
       },
       {
+        path: 'workspace/:id/statistics',
+        loadChildren: () => import('@pages/statistics/statistics.module').then(m => m.StatisticsModule),
+      },
+      {
         path: '',
         pathMatch: 'full',
         redirectTo: 'workspaces',

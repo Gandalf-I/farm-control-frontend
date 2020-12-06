@@ -1,6 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import * as L from 'leaflet';
-import { DrawEvents, featureGroup, FeatureGroup, icon, latLng, tileLayer } from 'leaflet';
+import { control, DrawEvents, featureGroup, FeatureGroup, icon, latLng, tileLayer } from 'leaflet';
 import { AuthService } from '@core/services/auth.service';
 
 @Component({
@@ -21,6 +20,7 @@ export class HomeComponent {
     ],
     zoom: 5,
     center: latLng({ lat: 46.879966, lng: -121.726909 }),
+    zoomControl: false,
   };
 
   drawOptions = {
@@ -53,6 +53,9 @@ export class HomeComponent {
   onMapReady(map: L.Map) {
     setTimeout(() => {
       map.invalidateSize();
+      control.zoom({
+        position:'bottomright',
+      }).addTo(map);
     }, 0);
   }
 }
