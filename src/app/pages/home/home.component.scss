@@ -72,3 +72,7 @@
 .statistics {
   font-weight: 600;
 }
+
+::ng-deep .leaflet-draw {
+  visibility: hidden;
+}

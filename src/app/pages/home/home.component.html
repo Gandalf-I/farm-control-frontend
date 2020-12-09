@@ -30,7 +30,9 @@
          [leafletDrawOptions]="drawOptions"
          (leafletDrawCreated)="onDrawCreated($event)"
          (leafletDrawStart)="onDrawStart($event)"
+         (leafletDrawStop)="onDrawStop($event)"
          (leafletMapReady)="onMapReady($event)"
+         (leafletDrawMarkerContext)="drawMark($event)"
          id="map">
 
       <!-- Add the drawnItems featureGroup to the map -->

@@ -3,30 +3,36 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Rout
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { UserService } from '@core/services/user.service';
+import { UserTypeEnum } from '@shared/interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root',
 })
-export class OnlyAuthGuard implements CanActivate {
+export class OnlyAdminGuard implements CanActivate {
 
   constructor(private userService: UserService, public router: Router) {
   }
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
     if (this.userService.userIsAuth) {
       return this.userService.getUser()
         .pipe(
-          map(() => true),
+          map(user => user.type === UserTypeEnum.Admin),
           catchError(() => {
             this.userService.user = null;
-            return of(true);
+            return of(false);
+          }),
+          tap((value) => {
+            if (!value) {
+              this.router.navigate(['workspaces']);
+            }
           }),
         );
     }
 
-    return this.router.navigate(['auth']);
+    return this.router.navigate(['workspaces']);
   }
 
 }

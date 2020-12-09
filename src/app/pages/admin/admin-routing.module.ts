@@ -8,16 +8,21 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       {
-        path: 'users',
-        loadChildren: () => import('./users/users.module').then(m => m.UsersModule),
+        path: 'statistics',
+        loadChildren: () => import('@pages/admin/statistics/statistics.module').then(m => m.StatisticsModule),
       },
       {
         path: 'fields',
-        loadChildren: () => import('./fields/fields.module').then(m => m.FieldsModule),
+        loadChildren: () => import('@pages/admin/fields/fields.module').then(m => m.FieldsModule),
       },
       {
-        path: 'statistics',
-        loadChildren: () => import('./statistics/statistics.module').then(m => m.StatisticsModule),
+        path: 'users',
+        loadChildren: () => import('@pages/admin/users/users.module').then(m => m.UsersModule),
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: './statistics',
       },
     ],
   },

@@ -19,7 +19,7 @@ export class WorkspaceApiService {
   }
 
   public getWorkspaceById(id: number): Observable<Workspace> {
-    return this.http.get('/workspace', {}, { id });
+    return this.http.get(`/workspace/${id}`, {}, { });
   }
 
   public createWorkspace(body): Observable<Workspace> {
@@ -30,7 +30,7 @@ export class WorkspaceApiService {
     return this.http.patch('/workspace', body, {}, {});
   }
 
-  public deleteWorkspace(id): Observable<Workspace> {
+  public deleteWorkspace(id): Observable<boolean> {
     return this.http.delete('/workspace', {}, { id });
   }
 }

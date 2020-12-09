@@ -3,6 +3,9 @@
   height: 100%;
   padding: 20px;
   justify-items: center;
+  grid-template-rows: max-content 1fr max-content;
+  grid-gap: 15px;
+  overflow: auto;
 
   .title {
     font-weight: 500;
@@ -12,9 +15,15 @@
 
   .card-list {
     display: grid;
+    width: 100%;
+    grid-row-gap: 10px;
+    align-content: start;
 
     .card {
       display: grid;
+      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+      padding: 5px;
+      grid-template-columns: 1fr 20px;
 
       &__title {
 
@@ -29,7 +38,7 @@
       }
 
       &__btn-delete {
-
+        cursor: pointer;
       }
 
       &__btn-open {
@@ -40,8 +49,13 @@
     }
   }
 
-  .add-btn {
+  .footer {
+    display: grid;
     align-self: end;
+    width: 100%;
+
+    .add-btn {
+    }
   }
 
 }

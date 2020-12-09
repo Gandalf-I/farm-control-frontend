@@ -1,6 +1,13 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { control, DrawEvents, featureGroup, FeatureGroup, icon, latLng, tileLayer } from 'leaflet';
+import { Component, ChangeDetectionStrategy, AfterViewInit } from '@angular/core';
+// @ts-ignore
+import * as L from 'leaflet';
 import { AuthService } from '@core/services/auth.service';
+
+declare let L: any;
+import 'leaflet-measure';
+import { ActivatedRoute } from '@angular/router';
+import { WorkspaceService } from '@pages/home/shared/services/workspace.service';
+import { MapService } from '@pages/home/shared/services/map.service';
 
 @Component({
   selector: 'app-home',
@@ -8,54 +15,69 @@ import { AuthService } from '@core/services/auth.service';
   styleUrls: ['./home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent {
+export class HomeComponent implements AfterViewInit {
+  map: L.DrawMap;
 
-  constructor(public authService: AuthService) {
+  constructor(public authService: AuthService,
+              private route: ActivatedRoute,
+              private workspaceService: WorkspaceService,
+              private mapService: MapService) {
+    workspaceService.setWorkspace(this.route.snapshot.params.id);
   }
 
-  drawnItems: FeatureGroup = featureGroup();
-  options = {
-    layers: [
-      tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: 'Open Street Map' }),
-    ],
-    zoom: 5,
-    center: latLng({ lat: 46.879966, lng: -121.726909 }),
-    zoomControl: false,
-  };
+  drawnItems: L.FeatureGroup = this.mapService.drawnItems;
+  options = this.mapService.options;
 
-  drawOptions = {
-    position: 'topright',
-    draw: {
-      marker: {
-        icon: icon({
-          iconSize: [25, 41],
-          iconAnchor: [13, 41],
-          iconUrl: 'assets/images/marker.png',
-        }),
-      },
-    },
-    edit: {
-      featureGroup: this.drawnItems,
-    },
-  };
+  drawOptions = this.mapService.drawOptions;
+
+  ngAfterViewInit() {
+  }
 
   public onDrawCreated(e: any) {
-    console.log('Draw Created Event!');
-
-    const layer = (e as DrawEvents.Created).layer;
-    this.drawnItems.addLayer(layer);
+    const type = e.layerType;
+    const layer = e.layer;
+    if (type === 'marker') {
+      console.log(layer._latlng);
+    } else if (type === 'polygon') {
+      console.log(layer._latlngs);
+    }
+    console.log(layer);
+    this.map.addLayer(layer);
   }
 
   public onDrawStart(e: any) {
-    console.log('Draw Started Event!');
+    console.log(23412314);
   }
 
-  onMapReady(map: L.Map) {
+  onDrawStop($event: L.DrawEvents.DrawStop) {
+    console.log($event.layer);
+  }
+
+  onMapReady(map: L.DrawMap) {
+    this.map = map;
+    this.mapService.map = map;
     setTimeout(() => {
       map.invalidateSize();
-      control.zoom({
-        position:'bottomright',
+      L.control.zoom({
+        position: 'bottomright',
       }).addTo(map);
+
+      const measureControl = new L.Control.Measure(
+        {
+          position: 'topright',
+          primaryLengthUnit: 'meters',
+          secondaryLengthUnit: 'kilometers',
+          primaryAreaUnit: 'hectares',
+          activeColor: '#5b82ca',
+          completedColor: '#1046d2',
+        },
+      );
+      measureControl.addTo(map);
     }, 0);
   }
+
+  drawMark($event: L.LeafletEvent) {
+    console.log($event);
+  }
+
 }

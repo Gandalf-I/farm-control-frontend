@@ -1,1 +1,37 @@
-<div class="page-wrap"></div>
+<div class="page-wrap">
+  <span class="title">
+    Seasons
+  </span>
+  <div class="card-list">
+    <div class="card" *ngFor="let season of seasons | async">
+      <div class="card__title">Name: {{season.name}}</div>
+      <mat-icon aria-label="close" class="card__btn-delete" (click)="deleteSeason(season); $event.stopPropagation()">close</mat-icon>
+      <div class="card__subtitle">{{season.startDate | date: 'yyyy:MM:dd'}} - {{season.endDate | date: 'yyyy:MM:dd'}}</div>
+    </div>
+  </div>
+  <div class="footer">
+    <form class="footer" [formGroup]="seasonForm" (ngSubmit)="createSeason()">
+      <mat-form-field class="example-form-field">
+        <mat-label>Name season</mat-label>
+        <input matInput type="text" formControlName="name">
+        <button mat-button *ngIf="seasonForm.value.name" matSuffix mat-icon-button aria-label="Clear" (click)="seasonForm.patchValue({name: ''})">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate placeholder="Start date" formControlName="startDate">
+          <input matEndDate placeholder="End date" formControlName="endDate">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" class="add-btn" >
+        Create seasons
+      </button>
+    </form>
+  </div>
+</div>

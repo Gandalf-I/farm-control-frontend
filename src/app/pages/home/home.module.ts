@@ -9,9 +9,10 @@ import { SharedModule } from '@shared/shared.module';
 import { ComponentsModule } from '@shared/components/components.module';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { LeafletDrawModule } from '@asymmetrik/ngx-leaflet-draw';
+import { ModalComponent } from './shared/components/modal/modal.component';
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, ModalComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

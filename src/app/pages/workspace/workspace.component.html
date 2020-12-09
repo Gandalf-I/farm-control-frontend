@@ -36,7 +36,7 @@
         My workspaces
       </div>
       <div class="wrap-list-card">
-        <mat-card class="card-workspace-wrap" *ngFor="let workspace of myWorkspaces" [routerLink]="['/workspace', workspace.id]">
+        <mat-card class="card-workspace-wrap" *ngFor="let workspace of myWorkspaces" [routerLink]="['/workspaces', workspace.id]">
           <mat-card-header>
             <mat-icon aria-label="close" (click)="deleteWorkspace(workspace); $event.stopPropagation()">close</mat-icon>
             <mat-card-title class="workspace-title">
@@ -54,7 +54,7 @@
       Allow workspaces
     </div>
     <div class="wrap-list-card">
-      <mat-card class="card-workspace-wrap" *ngFor="let workspace of accessWorkspaces" [routerLink]="['/workspace', workspace.id]">
+      <mat-card class="card-workspace-wrap" *ngFor="let workspace of accessWorkspaces" [routerLink]="['/workspaces', workspace.id]">
         <mat-card-header>
           <mat-card-title class="workspace-title">
             {{workspace.name}}
