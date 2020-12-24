@@ -26,13 +26,13 @@ export class OnlyAdminGuard implements CanActivate {
           }),
           tap((value) => {
             if (!value) {
-              this.router.navigate(['workspaces']);
+              this.router.navigate(['/workspaces']);
             }
           }),
         );
     }
 
-    return this.router.navigate(['workspaces']);
+    return this.router.navigate(['/workspaces']);
   }
 
 }

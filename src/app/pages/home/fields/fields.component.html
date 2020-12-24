@@ -1,1 +1,12 @@
-<div class="page-wrap">123</div>
+<div class="page-wrap">
+  <span class="title">
+    {{ 'Fields' | translate }}
+  </span>
+  <div class="card-list">
+    <div class="card" *ngFor="let field of this.mapService.fields | async" (click)="goToField(field)">
+      <div class="card__title">{{ 'Name' | translate }}: {{field.name}}</div>
+      <mat-icon aria-label="close" class="card__btn-delete" (click)="deleteFiled(field); $event.stopPropagation()">close</mat-icon>
+      <div class="card__content">{{ 'Area' | translate }}: <br>{{field.area}} {{ 'hectare' | translate }}</div>
+    </div>
+  </div>
+</div>

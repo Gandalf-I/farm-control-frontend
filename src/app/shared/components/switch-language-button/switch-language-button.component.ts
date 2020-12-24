@@ -30,6 +30,8 @@ export class SwitchLanguageButtonComponent implements OnInit {
       return;
     }
 
+    console.log(lang);
+
     this.translateService.setDefaultLang(lang);
     this.lang = this.translateService.getDefaultLang();
   }

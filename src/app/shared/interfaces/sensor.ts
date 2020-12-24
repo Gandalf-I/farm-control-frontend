@@ -1,8 +1,7 @@
-export interface Note {
+export interface Sensor {
   id?: number;
   name: string;
   lat: number;
   lng: number;
-  type?: number;
-  comment?: string;
+  workspaceId: string;
 }

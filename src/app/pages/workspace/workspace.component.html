@@ -1,15 +1,15 @@
 <div class="workspaces">
   <div class="my-workspaces">
     <div class="add-workspace">
-      <div class="title">Create workspace</div>
+      <div class="title">{{ 'Create workspace' | translate }}</div>
       <form class="form" [formGroup]="workspaceForm" (ngSubmit)="createWorkspace()">
         <mat-form-field appearance="legacy">
-          <mat-label>Name workspace</mat-label>
+          <mat-label>{{ 'Name workspace' | translate }}</mat-label>
           <input matInput formControlName="name">
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <mat-label>Select user</mat-label>
+          <mat-label>{{ 'Select user' | translate }}</mat-label>
           <input type="text"
                  matInput
                  formControlName="login"
@@ -22,18 +22,18 @@
         </mat-form-field>
         <mat-icon aria-label="close" class="add" (click)="addUserInWorkspace()">add</mat-icon>
         <div class="user-selected-list" *ngIf="selectUsers.length">
-          <div class="title">Users add in workspace</div>
+          <div class="title">{{ 'Users add in workspace' | translate }}</div>
           <div class="user" *ngFor="let user of selectUsers; index as i">
             {{i + 1}}) {{user.login}}
           </div>
         </div>
-        <button mat-raised-button color="primary" class="btn">Create</button>
+        <button mat-raised-button color="primary" class="btn">{{ 'Create' | translate }}</button>
         <span class="message">{{message}}</span>
       </form>
     </div>
     <div class="my-workspaces-list">
       <div class="title">
-        My workspaces
+        {{ 'My workspaces' | translate }}
       </div>
       <div class="wrap-list-card">
         <mat-card class="card-workspace-wrap" *ngFor="let workspace of myWorkspaces" [routerLink]="['/workspaces', workspace.id]">
@@ -42,7 +42,7 @@
             <mat-card-title class="workspace-title">
               {{workspace.name}}
             </mat-card-title>
-            <mat-card-subtitle>Total users: {{workspace.users.length + 1}}</mat-card-subtitle>
+            <mat-card-subtitle>{{ 'Total users' | translate }}: {{workspace.users.length + 1}}</mat-card-subtitle>
           </mat-card-header>
         </mat-card>
       </div>
@@ -51,7 +51,7 @@
 
   <div class="my-workspaces-list">
     <div class="title">
-      Allow workspaces
+      {{ 'Allow workspaces' | translate }}
     </div>
     <div class="wrap-list-card">
       <mat-card class="card-workspace-wrap" *ngFor="let workspace of accessWorkspaces" [routerLink]="['/workspaces', workspace.id]">
@@ -59,10 +59,11 @@
           <mat-card-title class="workspace-title">
             {{workspace.name}}
           </mat-card-title>
-          <mat-card-subtitle>Total users: {{workspace.users.length + 1}}</mat-card-subtitle>
+          <mat-card-subtitle>{{ 'Total users' | translate }}: {{workspace.users.length + 1}}</mat-card-subtitle>
         </mat-card-header>
       </mat-card>
     </div>
   </div>
 </div>
 
+<app-switch-language-button class="switch-language"></app-switch-language-button>

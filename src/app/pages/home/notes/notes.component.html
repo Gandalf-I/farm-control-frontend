@@ -1,18 +1,18 @@
 <div class="page-wrap">
   <span class="title">
-    Notes
+    {{ 'Notes' | translate }}
   </span>
   <div class="card-list">
-    <div class="card" *ngFor="let note of notes | async">
-      <div class="card__title">Name: {{note.name}}</div>
+    <div class="card" *ngFor="let note of this.mapService.notes | async" (click)="goToMarker(note)">
+      <div class="card__title">{{ 'Name' | translate }}: {{note.name}}</div>
       <mat-icon aria-label="close" class="card__btn-delete" (click)="deleteNote(note); $event.stopPropagation()">close</mat-icon>
-      <div class="card__subtitle">Comment: {{note.comment}}</div>
+      <div class="card__content">{{ 'Comment' | translate }}: <br>{{note.comment}}</div>
     </div>
   </div>
   <div class="footer">
-    <form class="footer" [formGroup]="noteForm" (ngSubmit)="createSeason()">
+    <form class="footer" [formGroup]="noteForm" (ngSubmit)="createNote()">
       <mat-form-field class="example-form-field">
-        <mat-label>Name</mat-label>
+        <mat-label>{{ 'Name' | translate }}</mat-label>
         <input matInput type="text" formControlName="name">
         <button mat-button *ngIf="noteForm.value.name" matSuffix mat-icon-button aria-label="Clear" (click)="noteForm.patchValue({name: ''})">
           <mat-icon>close</mat-icon>
@@ -20,15 +20,15 @@
       </mat-form-field>
 
       <mat-form-field class="example-form-field">
-        <mat-label>Description</mat-label>
-        <textarea [maxLength]="500" matInput type="text" formControlName="description"></textarea>
+        <mat-label>{{ 'Description' | translate }}</mat-label>
+        <textarea [maxLength]="500" matInput type="text" formControlName="comment"></textarea>
         <button mat-button *ngIf="noteForm.value.description" matSuffix mat-icon-button aria-label="Clear" (click)="noteForm.patchValue({description: ''})">
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
 
       <button mat-raised-button color="primary" class="add-btn" >
-        Create notes
+        {{ 'Create notes' | translate }}
       </button>
     </form>
   </div>

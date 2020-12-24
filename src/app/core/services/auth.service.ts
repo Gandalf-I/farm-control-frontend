@@ -44,7 +44,6 @@ export class AuthService {
       .pipe(
         tap((user) => {
           this.cookie.set(CookieEnum.Jwt, user.token);
-          // this.userService.getUser();
         }),
         catchError(({ error, title }) =>
           check ? this.signUp(payload) : throwError(error || title),

@@ -1,1 +1,10 @@
-<p>modal works!</p>
+<div class="section-list">
+  <span class="title">Sensor name: {{data.sensor.name}}</span><br/>
+  <span class="title">Load data</span><br/>
+  <input type="file"
+         class="file"
+         id="file"
+         accept="application/JSON"
+         (change)="handleFileInput($event.target.files)"><br/>
+  <button mat-raised-button color="primary" (click)="send()">Confirm</button>
+</div>

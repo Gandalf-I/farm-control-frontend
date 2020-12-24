@@ -1,1 +1,3 @@
-<p>users works!</p>
+<mat-card class="user-card" *ngFor="let value of values" (click)="delete(value)">
+  {{value}}
+</mat-card>

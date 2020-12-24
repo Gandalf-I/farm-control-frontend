@@ -27,9 +27,9 @@ export class SeasonsComponent implements OnInit {
 
   private initSeasonForm(): void {
     this.seasonForm = this.fb.group({
-      name: ['', [Validators.required, Validators.min(3)]],
-      startDate: ['', Validators.required],
-      endDate: ['', Validators.required],
+      name: [''],
+      startDate: [''],
+      endDate: [''],
     });
   }
 
@@ -47,7 +47,6 @@ export class SeasonsComponent implements OnInit {
     this.backendService.season.createSeason(this.workspaceService.workspace.value.id, this.seasonForm.value)
       .subscribe((value) => {
         this.seasonForm.reset();
-        this.seasonForm.markAsUntouched();
         this.seasons.next([...this.seasons.value, value]);
       });
   }

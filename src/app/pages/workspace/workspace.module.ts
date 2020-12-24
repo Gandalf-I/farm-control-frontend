@@ -12,6 +12,8 @@ import { WorkspaceCardComponent } from './shared/components/workspace-card/works
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import {ComponentsModule} from '@shared/components/components.module';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   declarations: [WorkspaceComponent, WorkspaceCardComponent],
@@ -26,6 +28,8 @@ import { MatCardModule } from '@angular/material/card';
     MatIconModule,
     MatButtonModule,
     MatCardModule,
+    ComponentsModule,
+    TranslateModule,
   ],
 })
 export class WorkspaceModule { }

@@ -8,9 +8,13 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class UsersComponent implements OnInit {
 
+  values = ['Данил', 'asdas', 'asdasdasd'];
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  delete(q) {
+    this.values = this.values.filter(s => s !== q);
+  }
 }

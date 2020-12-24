@@ -55,10 +55,7 @@
       background: #ffffff;
     }
   }
-
-
 }
-
 
 ::ng-deep .mat-drawer-inner-container {
   display: grid;
@@ -74,5 +71,10 @@
 }
 
 ::ng-deep .leaflet-draw {
+  visibility: hidden;
+}
+
+
+::ng-deep .leaflet-measure-resultpopup {
   visibility: hidden;
 }

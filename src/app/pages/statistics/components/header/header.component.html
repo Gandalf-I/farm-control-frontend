@@ -1,1 +1,31 @@
-<p>header works!</p>
+<header class="header-wrapper">
+  <nav class="links">
+    <a routerLink="/podcasts" class="logo">
+      <img class="img" src="./assets/images/logo.png" alt="img">
+    </a>
+
+    <ul class="link-list">
+      <li class="link-item">
+        <a mat-button routerLink="/podcasts" routerLinkActive="active-link" color="primary" class="link">
+          Podcast list
+        </a>
+      </li>
+      <li>
+        <a mat-button routerLink="/my-podcasts" routerLinkActive="active-link" color="primary">
+          My podcasts
+        </a>
+      </li>
+      <li>
+        <a mat-button routerLink="/following" routerLinkActive="active-link" color="primary">
+          Following
+        </a>
+      </li>
+      <li>
+        <a mat-button routerLink="/playlists" routerLinkActive="active-link" color="primary">
+          Playlists
+        </a>
+      </li>
+    </ul>
+
+  </nav>
+</header>

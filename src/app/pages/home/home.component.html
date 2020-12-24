@@ -3,19 +3,19 @@
     <div class="sidenav">
       <header class="header">
         <nav class="nav">
-          <img src="/assets/images/logo.png" alt="logo" routerLink="./" class="img">
+          <img src="/assets/images/logo.png" alt="logo" routerLink="/workspaces" class="img">
           <ul>
-            <li><a routerLink="./seasons" routerLinkActive="active">Seasons</a></li>
-            <li><a routerLink="./fields" routerLinkActive="active">Fields</a></li>
-            <li><a routerLink="./notes" routerLinkActive="active">Notes</a></li>
-            <li><a routerLink="./sensors" routerLinkActive="active">Sensors</a></li>
+            <li><a routerLink="./seasons" routerLinkActive="active">{{ 'Seasons' | translate }}</a></li>
+            <li><a routerLink="./fields" routerLinkActive="active">{{ 'Fields' | translate }}</a></li>
+            <li><a routerLink="./notes" routerLinkActive="active">{{ 'Notes' | translate }}</a></li>
+            <li><a routerLink="./sensors" routerLinkActive="active">{{ 'Sensors' | translate }}</a></li>
           </ul>
         </nav>
       </header>
       <footer class="footer">
-        <a routerLink="./statistics" routerLinkActive="active" class="statistics">Go to statistics</a>
+        <a routerLink="./statistics" routerLinkActive="active" class="statistics">{{ 'Go to statistics' | translate }}</a>
         <app-switch-language-button></app-switch-language-button>
-        <button mat-raised-button color="primary" class="logout" (click)="authService.logOut()">Logout</button>
+        <button mat-raised-button color="primary" class="logout" (click)="authService.logOut()">{{ 'Logout' | translate }}</button>
       </footer>
     </div>
   </mat-drawer>
@@ -33,7 +33,8 @@
          (leafletDrawStop)="onDrawStop($event)"
          (leafletMapReady)="onMapReady($event)"
          (leafletDrawMarkerContext)="drawMark($event)"
-         id="map">
+         id="map"
+    #map>
 
       <!-- Add the drawnItems featureGroup to the map -->
       <div [leafletLayer]="drawnItems"></div>

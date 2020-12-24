@@ -1,13 +1,26 @@
 <div class="page-wrap">
   <span class="title">
-    Sensors
+    {{ 'Sensors' | translate }}
   </span>
   <div class="card-list">
-    <div class="card">
-
+    <div class="card" *ngFor="let note of this.mapService.sensors | async" (click)="goToSensor(note)">
+      <div class="card__title">{{ 'Name' | translate }}: {{note.name}}</div>
+      <mat-icon aria-label="close" class="card__btn-delete" (click)="deleteNote(note); $event.stopPropagation()">close</mat-icon>
     </div>
   </div>
-  <button mat-raised-button color="primary" class="add-btn">
-    Add sensor
-  </button>
+  <div class="footer">
+    <form class="footer" [formGroup]="this.mapService.sensorForm" (ngSubmit)="createSensor()">
+      <mat-form-field class="example-form-field">
+        <mat-label>{{ 'Name' | translate }}</mat-label>
+        <input matInput type="text" formControlName="name">
+        <button mat-button *ngIf="this.mapService.sensorForm" matSuffix mat-icon-button aria-label="Clear" (click)="this.mapService.sensorForm.patchValue({name: ''})">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" class="add-btn" >
+        {{ 'Add sensor' | translate }}
+      </button>
+    </form>
+  </div>
 </div>

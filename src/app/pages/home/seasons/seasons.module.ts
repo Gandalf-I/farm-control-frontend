@@ -11,22 +11,24 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatCardModule} from '@angular/material/card';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   declarations: [SeasonsComponent],
-  imports: [
-    CommonModule,
-    SeasonsRoutingModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatIconModule,
-    FormsModule,
-    MatInputModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    ReactiveFormsModule,
-    MatCardModule,
-  ],
+    imports: [
+        CommonModule,
+        SeasonsRoutingModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatIconModule,
+        FormsModule,
+        MatInputModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        ReactiveFormsModule,
+        MatCardModule,
+        TranslateModule,
+    ],
   providers: [
     MatDatepickerModule,
   ],

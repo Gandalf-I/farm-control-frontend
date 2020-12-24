@@ -13,6 +13,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SharedModule } from '@shared/shared.module';
 import { ComponentsModule } from '@shared/components/components.module';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -20,18 +21,19 @@ import { ComponentsModule } from '@shared/components/components.module';
     SignInComponent,
     SignUpComponent,
   ],
-  imports: [
-    CommonModule,
-    AuthRoutingModule,
-    ReactiveFormsModule,
-    SharedModule,
-    MatTabsModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    ComponentsModule,
-  ],
+    imports: [
+        CommonModule,
+        AuthRoutingModule,
+        ReactiveFormsModule,
+        SharedModule,
+        MatTabsModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        ComponentsModule,
+        TranslateModule,
+    ],
 })
 export class AuthModule {
 }

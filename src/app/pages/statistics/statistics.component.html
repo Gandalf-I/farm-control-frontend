@@ -1,1 +1,10 @@
-<p>statistics works!</p>
+<div class="wrap">
+  <div class="title">Statistics</div>
+
+  <div class="charts-wrap">
+    <ngx-chartjs [data]="airTemp" type="line" class="chart"></ngx-chartjs>
+    <ngx-chartjs [data]="airHumidity" type="line" class="chart"></ngx-chartjs>
+  </div>
+
+</div>
+<app-switch-language-button class="switch-language"></app-switch-language-button>

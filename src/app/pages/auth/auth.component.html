@@ -2,14 +2,16 @@
   <div class="auth">
     <mat-card class="tabs">
       <mat-tab-group class="tabs__group">
-        <mat-tab label="Log in">
+        <mat-tab label="{{ 'Log in' | translate }}">
           <app-sign-in></app-sign-in>
         </mat-tab>
-        <mat-tab label="Registration">
+        <mat-tab label="{{ 'Registration' | translate }}">
           <app-sign-up></app-sign-up>
         </mat-tab>
       </mat-tab-group>
     </mat-card>
   </div>
 </div>
+
+<app-switch-language-button class="switch-language"></app-switch-language-button>
 

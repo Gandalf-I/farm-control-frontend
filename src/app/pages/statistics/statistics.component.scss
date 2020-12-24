@@ -1,0 +1,20 @@
+.title {
+  text-align: center;
+  padding: 10px;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.wrap {
+  max-width: 1440px;
+  background: #eeeeee;
+  margin: 0 auto;
+  min-height: 100%;
+}
+
+.charts-wrap {
+  max-width: 80%;
+  display: grid;
+  margin: 0 auto;
+  grid-gap: 50px;
+}

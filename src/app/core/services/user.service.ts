@@ -47,4 +47,8 @@ export class UserService {
   public getToken(): string {
     return this.cookieService.get(CookieEnum.Jwt);
   }
+
+  public deleteToken(): void {
+    this.cookieService.delete(CookieEnum.Jwt);
+  }
 }
